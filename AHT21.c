@@ -1,4 +1,5 @@
 #include "AHT21.h"
+#include <stdio.h>
 
 const uint8_t MEASURE_COMMAND[3] = {0xAC, 0x33, 0x00};
 i2c_inst_t *_i2c_channel;
@@ -72,7 +73,5 @@ void AHT21_example() {
         float data[2];
         AHT21_getMeasurementBlocking(data);
         printf("H:%.2f%%, T:%.2fC\n", data[0], data[1]);
-
-        watchdog_update();
     }
 }
