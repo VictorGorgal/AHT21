@@ -1,5 +1,8 @@
 #include "AHT21.h"
 
+const uint8_t MEASURE_COMMAND[3] = {0xAC, 0x33, 0x00};
+i2c_inst_t *_i2c_channel;
+
 float _humidityFromRawData(uint8_t *rawData) {
     uint32_t raw_humidity = (rawData[1] << 12) | (rawData[2] << 4) | ((rawData[3] & 0xF0) >> 4);
     return ((float)raw_humidity / (float)(1 << 20)) * 100;
